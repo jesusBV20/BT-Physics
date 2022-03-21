@@ -1,0 +1,82 @@
+\section{Tratamientos de datos multidimensionales}
+
+
+\subsection{Compresión y \textit{denoising} de señales bidimensionales}
+
+% FFT
+\subsubsection{Transformada de Fourier rápida}
+
+\begin{equation}
+     \hat f_k = \sum^{n-1}_{j=0} f_j e^{-i2\pi j k/n}
+     \qquad\qquad
+     f_k = \frac{1}{n} \left( \sum^{n-1}_{j=0} \hat f_j e^{-i2\pi j k/n} \right)
+\end{equation}
+
+% SVD
+\newpage
+\subsubsection{Descomposición en valores singulares}
+
+Dada una matriz $A$ con dimensiones $m \times n$, sus valores singulares corresponderán con la raíz cuadrada de los autovalores de $A^T A$, que vendrán denotados por $\sigma_1$, $\dots$, $\sigma_n$ y ordenados de forma que $\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_n$. Con esto en mente, se puede demostrar \cite{biblia} que existe una descomposición tal que $A = U \Sigma V^T$, donde U ($m \times m$) y V ($n \times n$) son matrices ortogonales y $\Sigma$ ($m \times n$) es una matriz diagonal compuesta por $\sigma_1$, $\dots$, $\sigma_n$. \\
+
+Interpretaremos A como una transformación que nos lleva del dominio $\mathds{R}^n$ hasta el rango $\mathds{R}^m$. Como es de esperar, ambos espacios podrán ser descritos por una base vectorial, que vendrá contenida en las matrices V (dominio) y U (rango). Con esto en mente, ya somos capaces de visualizar la SVD (\textit{Singular Value Decomposition}) como una método que se asegura de encontrar un par de bases ortonormales tales que la transformación quede representada por la matriz diagonal $\Sigma$. \\
+
+Para construir la matriz $V = [v_1 \dots v_n]$, se debe encontrar una base ortonormal $\{v_1, \dots, v_n\}$ compuesta por autovectores de la matriz simétrica $A^T A$. Estos mismos elementos $v_i$ se aprovechan para diseñar la matriz $U = [u_1 \dots u_m]$ tomando los vectores $Av_1, \dots, Av_n$, que también serán ortogonales (demostración sencilla en \cite{biblia}). \\
+
+Bajo esta construcción, resulta que $||A v_i|| = A^T A$, de modo que cada elemento $A v_i$ se asocia a un valor singular de A. El problema de esto es que únicamente existen $r < m$ $\sigma_r \neq 0$, por lo que inicialmente no contaremos con la cantidad suficiente de vectores $A v_i$ para formar una base de $\mathds{R}^m$, tendremos que prolongar el conjunto $\{u_1 \dots u_r\}$ de dichos vectores normalizados. Teniendo todo esto en mente, finalmente obtendremos la base $\{u_1 \dots u_m\}$, donde $u_i = \frac{A v_i}{||A v_i||} = \frac{A v_i}{\sigma_i}$. \\
+
+
+
+Una vez llegados a este punto, ya somos capaces de
+desarrollar $A = U \Sigma V^T$ para llegar a una de las propiedades fundamentales de esta descomposición (\textit{low rank approximation property}): 
+
+\begin{equation*}
+    \begin{array}{ll}
+        A = U 
+        \begin{bmatrix}
+        \sigma_1 & \cdots & 0        \\
+        \vdots   & \ddots & \vdots   \\
+        0        & \cdots & \sigma_r \\
+        \end{bmatrix}
+        V^T & = U
+        \left(
+        \begin{bmatrix}
+        \sigma_1 & \cdots & 0        \\
+        \vdots   & \ddots & \vdots   \\
+        0        & \cdots & 0        \\
+        \end{bmatrix} + \cdots +
+        \begin{bmatrix}
+        0        & \cdots & 0        \\
+        \vdots   & \ddots & \vdots   \\
+        0        & \cdots & \sigma_r \\
+        \end{bmatrix}
+        \right) V^T\\
+        \\
+         & = \sigma_1 u_1 v_1^T + \cdots + \sigma_r u_r  v_r^T,
+    \end{array}
+\end{equation*}
+
+es decir, dada una matriz $A$ con dimensiones $m \times n$ con rango $r$ siempre se cumplirá
+
+\begin{equation} \label{eq:SVD}
+    A = \sum^r_{i=1} \sigma_i u_i v_i^T 
+\end{equation}
+
+Aprovechando esta propiedad podremos obtener una $A_{ap}$ similar a la matriz $A$, mediante una aproximación en mínimos cuadrados que coincidirá con los $k$ primeros términos de la ecuación (\ref{eq:SVD}). Cabe destacar que el rango de $A_{ap}$ será dicho $k \leq r$. \\
+
+\newpage
+
+Para cuantificar esta compresión, se define el coeficiente de ratio de compresión $CR$ como una relación proporcional entre el tamaño de la imagen original $S_o$ y el de la imagen ya comprimida $S_c$:
+
+\begin{equation} \label{cr}
+   S_c = CR \cdot S_o 
+\end{equation}
+
+% Detección de blobs
+\newpage
+\subsection{Detección de columnas atómicas}
+
+
+
+% Caracterización
+\newpage
+\subsection{Caracterización de columnas atómicas}

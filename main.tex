@@ -1,58 +1,39 @@
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 % FORMATO Y PAQUETES
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------
 
 \documentclass[12pt, a4paper]{article} %Tamaño mínimo de letra 11pto.
+\usepackage{import} %Estructurar en varios .tex
 
-\usepackage{graphicx} 
-\usepackage[spanish]{babel} %Español 
-\usepackage[utf8]{inputenc} %Para poder poner tildes
-\usepackage{vmargin} %Para modificar los márgenes
-\usepackage{import}
-\setmargins{2.5cm}{1.5cm}{16.5cm}{23.42cm}{10pt}{1cm}{0pt}{2cm}
-%margen izquierdo, superior, anchura del texto, altura del texto, altura de los encabezados, espacio entre el texto y los encabezados, altura del pie de página, espacio entre el texto y el pie de página
+\import{./}{formato.tex}
+
+% -------------------------------
 
 \begin{document}
+%Extensión máxima 20 páginas sin contar portada ni resumen (sí se incluye índice, introducción, conclusiones y bibliografía).
 
-%----------------------------------------------------------------------------------------
-% PORTADA
-%----------------------------------------------------------------------------------------
-
+% Portada -
 \import{./}{portada.tex}
 
+% Índice -
+\newpage
+\pagenumbering{arabic} 
+\tableofcontents
+\newpage
 
+% Cuerpo -
+\import{./capitulos/}{intro.tex}
+\newpage
 
 \import{./capitulos/}{cap_1.tex}
-
-
-
-
-
 \newpage
-%----------------------------------------------------------------------------------------
-% ÍNDICE
-%----------------------------------------------------------------------------------------
-
-\tableofcontents
-
+\import{./capitulos/}{cap_2.tex}
 \newpage
-%----------------------------------------------------------------------------------------
-% CUERPO
-%----------------------------------------------------------------------------------------
-
+\import{./capitulos/}{cap_3.tex}
 \newpage
-\begin{equation}
-    NLoG(x,y,\sigma) = \sigma^2\nabla^2 n_\sigma =  - \frac{1}{\pi\sigma^2}\left[1 - \frac{x^2 + y^2}{2\sigma^2}\right]e^{-\frac{x^2 + y^2}{2\sigma^2}}
-\end{equation}
 
-\begin{equation}
-    S(x,y,\sigma) = \sigma^2\nabla^2 n_\sigma \cdot I(x,y)
-\end{equation}
-
-\begin{equation}
-    n(x) = \frac{z\pi\sigma}{\mu^2}
-\end{equation}
+% Referencias/Bibliografía -
+\import{./}{referencias.tex}
 
 \end{document}
-
-\import{./}{referencias.tex}
+% -------------------------------
