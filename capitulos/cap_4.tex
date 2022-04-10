@@ -1,4 +1,4 @@
-\section{Búsqueda de vacantes de oxígeno en STO mediante imágenes 4D-STEM}
+\section{Búsqueda de vacantes de oxígeno en SrTiO$_3$ mediante imágenes 4D-STEM}
 
 \begin{wrapfigure}{o}{6.5cm}
     \includegraphics[width=0.38\textwidth]{fig/Fig15.png}
@@ -8,15 +8,17 @@
 
 % Introducción con información física sobre las vacantes de oxígeno en STO y cómo están ligadas a las propiedades del material. ¿Para qué se usa STO?
 
-Bla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla aBla blaBla blaBla blaBlaaBla blaBla blaBla blaBlaaBla blaBla blaBla blaBla aBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla aBla blaBla blaBla blaBlaaBla blaBla blaBla blaBlaaBla blaBla blaBla blaBla aBla blaBla blaBla blaBla 
+Bla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla aBla blaBla blaBla blaBlaaBla blaBla blaBla blaBlaaBla blaBla blaBla blaBla aBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla aBla blaBla blaBla blaBlaaBla blaBla blaBla blaBlaaBla blaBla blaBla blaBla aBla blaBla blaBla blaBla Bla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla aBla blaBla blaBla blaBlaaBla blaBla blaBla blaBlaaBla blaBla blaBla blaBla aBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla blaBla aBla blaBla blaBla 
 
 
+\vfill
+\subsection{Procesamiento de imágenes ABF de SrTiO$_3$}
+
+La muestra STO de la \autoref{fig:16} se está utilizando para diseñar nuevos detectores basados en 4D-STEM capaces de resolver entre columnas de oxígeno con y sin vacantes. No obstante, los datos que se han tomado en una primera sesión de STEM tienen tal cantidad de ruido que dichas columnas de oxígeno resultan indistinguibles a simple vista.\\
+
+Partiendo de la imagen ABF que se muestra en la Figura \ref{fig:16}a, llevaremos a cabo varios procesos de \textit{denoising}. Nuestro objetivo principal es sacar a la luz esas columnas de oxígeno que, según se muestra en la simulación de la \autoref{fig:15}, deberían de poder apreciarse sin problemas sobre la región de integración del patrón de difracción en la que estamos trabajando.
 
 \newpage
-\subsection{Procesamiento de imágenes ABF de STO}
-
-Partiendo de la imagen ABF que se muestra en la \autoref{fig:16}, llevaremos a cabo varios procesos de \textit{denoising}. Nuestro objetivo principal es sacar a la luz las columnas de oxígeno que, según se muestra en la simulación de la \autoref{fig:15}, deberían de poder apreciarse sin problemas sobre la región de integración del patrón de difracción en la que estamos trabajando.
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{fig/Fig16.png}
@@ -32,24 +34,21 @@ La entrada para los distintos algoritmos de \textit{denoising} será un \textit{
 
 Una vez hemos generado el \textit{clean stack} de celdas unidad, volvemos a aplicar PCA y NMF (Figura \ref{fig:17}c), esta vez para realizar un promedio que nos permita extraer la información común entre todas las imágenes del \textit{stack}.
 
-% Discusión: ¿Qué estamos observando? ¿Son buenos resultados?
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{fig/Fig17.png}
-    \caption{ Figura que muestra \textbf{a)} algunos de los parches contenidos en cada \textit{stack}, \textbf{b)} la topología del \textit{autoencoder} junto a su salida tras un entrenamiento de 300 iteraciones a un \textit{learning rate} de 0.2, y \textbf{c)} el resultado de aplicar PCA y NMF sobre el \textit{clean stack}. Todo el código escrito por el autor, en relación a este análisis, se encuentra en el capítulo 4 de la referencia \cite{repo}.}
-    \label{fig:17}
-\end{figure}
-
-\subsubsection{\textit{Denoising} por una una red neuronal con topología de \textit{autoencoder}}
+\subsubsection{\textit{Denoising} por una red neuronal con topología de \textit{autoencoder}}
 
 Un \textit{autoencoder} es un tipo de red neuronal que se va a encargar de codificar las características más críticas de un \textit{dataset} mediante \textbf{aprendizaje no supervisado}. La simetría en la topología de este tipo de redes es fundamental, en nuestro caso seleccionaremos $m^2$-5-5-5-5-$m^2$, donde $m^2$ corresponde con el número de píxeles presentes en cada parche.\\
 
 Si lo que buscamos es utilizar un \textit{autoencoder} para reducir el ruido de una imagen, el primer paso es añadir a nuestro \textit{clean stack} un ruido gaussiano de forma artificial. De este modo, generaremos el \textit{noisy stack} que se muestra en la Figura \ref{fig:17}a, el \textit{input} de nuestra red. Una vez contamos con esta entrada, entrenaremos al \textit{autoencoder} imponiendo que su salida sea similar a las imágenes contenidas en el \textit{clean stack}. Así, tras 300 iteraciones, obtenemos el resultado que se muestra en la Figura \ref{fig:17}b.
 
-% Discusión: ¿Qué estamos observando? ¿Son buenos resultados?
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/Fig17.png}
+    \caption{ Figura que muestra \textbf{a)} algunos de los parches contenidos en cada \textit{stack}, \textbf{b)} la topología del \textit{autoencoder} junto a su salida tras un entrenamiento de 300 iteraciones a un \textit{learning rate} de 0.2, y \textbf{c)} el resultado de aplicar PCA y NMF sobre el \textit{clean stack}. Todo el código escrito por el autor en relación a este análisis se encuentra en el capítulo 4 de la referencia \cite{repo}.}
+    \label{fig:17}
+\end{figure}
 
+\subsection{Análisis de resultados y conclusiones}
 
+En vista de los resultados de la \autoref{fig:17}, realmente no hemos conseguido alcanzado el objetivo inicial de distinguir las columnas de oxígeno presentas en la imagen ABF de STO. Esta información es tan poco significativa que se ha visto diluida entre el resto del ruido, de modo que ninguno de los algoritmos empleados ha sido capaz de captarla. Si contáramos con una mayor cantidad de datos, dado que las columnas de oxígeno siempre van a estar presentes en nuestra imagen ABF, a la larga éstas comenzarían a ganar relevancia entre el resto de anomalías.\\
 
+A pesar de este hecho, la eficiencia de las técnicas de \textit{denoising} que hemos empleado es muy alta. Las columnas de Ti y Sr de la celda unidad procesada han quedado mucho mejor definidas en comparación a las de la imagen original. 
