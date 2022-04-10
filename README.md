@@ -2,6 +2,6 @@
 [![PROFILE](https://img.shields.io/badge/profile%20-%23323330.svg?&style=for-the-badge&logo=perfil&logoColor=black&color=00326b)](https://github.com/jesusBV20)
 
 # Bachelor's Degree Final Project | Jesús Bautista Villar
-**Advanced microscopy techniques applied to cuttingedge material systems**
+**"Advanced microscopy techniques applied to cuttingedge material systems"**
 
 ### Abstract:
