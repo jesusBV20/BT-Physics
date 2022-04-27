@@ -5,29 +5,29 @@
 \setmargins{2.5cm}{1.5cm}{16.5cm}{23.42cm}{10pt}{1cm}{0pt}{2cm}
 % Margen izquierdo, superior, anchura del texto, altura del texto, altura de los encabezados, espacio entre el texto y los encabezados, altura del pie de página, espacio entre el texto y el pie de página.
 
+\setlength{\parindent}{0cm} %Por defecto es 15pt.
+% Para añadir indentación manualmente: \hangindent=0.7cm 
+
 % Figuras, imágenes y sus captions
 \usepackage{graphicx} 
 \usepackage[font=small,labelfont=bf]{caption}
 
 % Otros paquetes
-\usepackage{floatpag}
+\usepackage{floatpag} %Página del abstract no numerada
 \usepackage{ dsfont }
 \usepackage{amsmath } %Matrices
 \usepackage{hyperref} %\autoref{}
-\usepackage{wrapfig} % Texto y figura "side by side"
+\usepackage{wrapfig}  %Texto y figura "side by side"
 
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={Overleaf Example},
+    citecolor=blue,
     pdfpagemode=FullScreen,
-    }
+}
 \urlstyle{same}
 
 % Macros
-\setlength{\parindent}{0cm} % Default is 15pt.
-% Para añadir indentación manualmente: \hangindent=0.7cm 
-
 \renewcommand{\baselinestretch}{1} % Interlineado
