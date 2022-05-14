@@ -2,7 +2,7 @@
 \section*{\centering\scshape\Huge Introducción}
 \addcontentsline{toc}{section}{Introducción} \normalsize
 
-Dentro del campo de la microscopía, la STEM (\textit{Scanning Transmission Electron Microscopy}) es única en lo que respecta a la cantidad de información que se puede obtener de una única muestra. Es más, las capacidades de este tipo de microscopios han mejorado drásticamente en los últimos años con la aparición de los correctores de aberración multipolares, permitiéndonos alcanzar resoluciones que llegan a superar los 0.5 Å. Por ello hablamos hoy en día de esta técnica como una herramienta fundamental para el diseño de nuevos materiales avanzados.\\
+Dentro del campo de la microscopía, la microscopía electrónica de transmisión con barrido o STEM (\textit{scanning transmission electron microscopy}) es única en lo que respecta a la cantidad de información que se puede obtener de una única muestra. Es más, las capacidades de este tipo de microscopios han mejorado drásticamente en los últimos años con la aparición de los correctores multipolares de aberración esférica, permitiéndonos alcanzar resoluciones que llegan a superar los 0.5 Å \cite{STEM_basics}. Por ello hablamos hoy en día de esta técnica como una herramienta fundamental para el diseño de nuevos materiales avanzados.\\
 
 \begin{figure}[h!]
     \centering
@@ -16,11 +16,11 @@ En la \autoref{fig:1} se muestra el esquema de un STEM de alta resolución. El h
 Una vez el haz de electrones alcanza la muestra, se pueden producir dispersiones tanto elásticas (curvatura de la trayectoria) como inelásticas (pérdida de energía cinética). Es entonces cuando entran en juego los detectores, que comúnmente podrán suministrarnos diversas señales:
 
 \begin{itemize}
-    \item Los detectores HA (\textit{High Angle})  medirán el \textbf{ADF} (\textit{Annular Dark-Field}). Contarán en cada píxel la cantidad de electrones transmitidos que, tras atravesar la muestra, se han desviado mucho respecto al eje normal al plano de incidencia. Aquí juegan un papel protagonista los núcleos pesados, pues son capaces de interactuar fuertemente con los electrones.
+    \item Los detectores anulares de campo oscuro (\textit{annular dark field}, \textbf{ADF}) medirán las señales electrónicas deflectadas a altos ángulos (\textit{high angle}, HA). Contarán en cada píxel la cantidad de electrones transmitidos que, tras atravesar la muestra, se han desviado mucho respecto al eje normal al plano de incidencia. Aquí juegan un papel protagonista los núcleos pesados, pues son capaces de interactuar fuertemente con los electrones.
     
-    \item Cuando los electrones se dispersan de forma inelástica pierden una cantidad de energía que puede ser medida por \textbf{EELS} (\textit{Electron Energy Loss Spectroscopy}) mediante una CCD (\textit{Charge-Coupled Device}) o una matriz de fotodiodos.
+    \item Cuando los electrones se dispersan de forma inelástica pierden una cantidad de energía que puede ser medida por espectroscopías de pérdida de energía de electrones (\textit{electron energy loss spectroscopy}, \textbf{EELS}) mediante una CCD (\textit{Charge-Coupled Device}) o una matriz de fotodiodos.
     
-    \item Cubriendo la entrada al espectrómetro se puede situar una CCD removible capaz de medir el \textbf{patrón de difracción} completo que se genera en cada punto. Variando el ángulo de integración del patrón se pueden generar imágenes \textbf{BF} (\textit{Bright-Field}) y \textbf{ABF} (\textit{Annular Bright-Field}), capaces de captar las columnas atómicas menos pesadas.
+    \item Cubriendo la entrada al espectrómetro se puede situar una CCD removible capaz de medir el \textbf{patrón de difracción} completo que se genera en cada punto. Variando el ángulo de integración del patrón se pueden generar imágenes de campo claro (\textit{bright field}, \textbf{BF}) o anulares de campo claro (\textit{annular bright field}, \textbf{ABF}), capaces de captar las columnas atómicas menos pesadas.
     
     \item Por separado, otro espectrómetro es capaz de detectar las \textbf{emisiones de rayos X} generadas por las excitaciones de electrones en la muestra.
 \end{itemize}
@@ -29,21 +29,23 @@ Una vez el haz de electrones alcanza la muestra, se pueden producir dispersiones
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{fig/Fig2.png}
+    \includegraphics[width=0.85\textwidth]{fig/Fig2.png}
     \caption{En esta figura se muestra esquemáticamente todas las dimensiones en las que se puede trabajar con STEM: \textbf{a)} Espacio real-recíproco con ADF y difracción, \textbf{b)} energía mediante EELS y/o rayos X, \textbf{c)} temporal si se requiere observar la evolución de un fenómeno. Imagen adaptada de la referencia \cite{foto_intro} realizando una selección de imágenes.}
     \label{fig:2}
 \end{figure}
 
 \newpage
-Por esta razón, tal y como se muestra en la \autoref{fig:2}, el STEM puede aportar en una única medida datos en el dominio temporal que pueden vivir simultáneamente dentro del espacio real, recíproco y de energías. Definitivamente, contamos una gran cantidad de información que, debido a su alta dimensionalidad, plantea un escenario en el que resulta necesaria la introducción de nuevos métodos estadísticos avanzados de big data y algoritmos punteros de inteligencia artificial (IA).\\
+Por esta razón, tal y como se muestra en la \autoref{fig:2}, el STEM es una técnica multidimensional que puede aportar en una única medida datos en el dominio temporal que pueden vivir simultáneamente dentro del espacio real, recíproco y de energías. Definitivamente, contamos una gran cantidad de información que, debido a su alta dimensionalidad, plantea un escenario en el que resulta necesaria la introducción de nuevos métodos estadísticos avanzados de big data y algoritmos punteros de inteligencia artificial (IA).\\
 
 % Párrafo siguiente añadido recientemente para indicar el enfoque principal del trabajo.
 
-En este trabajo nos centraremos principalmente en el 4D-STEM (\textit{4-Dimensional Scanning Transmission Electron Microscopy}), donde encontraremos imágenes ADF y patrones de difracción. Ambos grupos de datos en conjunto serán los que nos aporten la información necesaria para identificar y cuantificar algunos de los defectos presentes en una red cristalina.\\
+En este trabajo nos centraremos principalmente en el 4D-STEM (\textit{4-dimensional scanning transmission electron microscopy}), donde encontraremos imágenes ADF y patrones de difracción. Ambos grupos de datos en conjunto serán los que nos aporten la información necesaria para identificar y cuantificar algunos de los defectos presentes en una red cristalina.\\
 
 % Objetivos -
-\section*{Objetivos}
-\addcontentsline{toc}{section}{Objetivos} \normalsize
+\section*{Objetivos y metodología}
+\addcontentsline{toc}{section}{Objetivos y metodología} \normalsize
+
+El objetivo general de este trabajo es revisar el estado del arte de técnicas de IA aplicadas al campo de la microscopía electrónica multidimensional, en particular del 4D-STEM. Este fin se conseguirá mediante los siguientes objetivos específicos:
 
 \begin{itemize}
     \item Estudiar la relevancia de la inteligencia artificial y algunas herramientas estadísticas para el tratamiento de datos dentro del campo de la microscopía electrónica. % Cumplido
@@ -60,3 +62,5 @@ En este trabajo nos centraremos principalmente en el 4D-STEM (\textit{4-Dimensio
     
     \item Explorar herramientas de compresión para optimizar el tamaño en memoria de las imágenes tomadas por STEM. % Cumplido
 \end{itemize}
+
+La metodología a emplear consistirá en una revisión de la literatura científica relevante con un trabajo más experimental, basado en la programación de una serie de algoritmos propios capaces de analizar datos de la literatura. Las primeras tres secciones se dedicarán a estos fines, mientras que en la cuarta se expondrán una serie de datos experimentales sobre los que pondremos a prueba los algoritmos desarrollados en este trabajo. Por último, presentaremos unas conclusiones generales.

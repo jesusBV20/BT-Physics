@@ -2,7 +2,7 @@
 
 Una vez conocemos la posición de cada columna atómica, necesitamos generar y asignarles una firma que nos permita clasificar las distintas especies de columnas en función del tipo de átomo que representan. Dichas firmas, mejor conocidas como vectores de características (\textit{feature vectors}), serán el input que suministremos a una red neuronal y/o algoritmos de \textit{clustering} para clasificar las distintas columnas atómicas presentes en cierta imagen ADF.\\
 
-En nuestro caso, la información necesaria para caracterizar a cada columna la extraemos fijándonos en cómo se posicionan sus vecinos más próximos. Para cada átomo tomamos de la imagen original un pequeño parche $m \times m$ (ver \autoref{fig:8}) y lo almacenamos en un tensor $m \times m \times n$, donde n corresponderá con el número total de parches. Posteriormente, aplanamos cada sección $m \times m$ para generar vectores de longitud $m^2$, de modo que finalmente nos quedaremos con una matriz $X$ de dimensiones $n \times m^2$. En las siguientes secciones trataremos de procesar toda esta información para generar la firma de cada una de nuestras columnas atómicas.
+En nuestro caso, la información necesaria para caracterizar a cada columna la extraemos fijándonos en cómo se posicionan sus vecinos más próximos. Para cada átomo tomamos de la imagen original un pequeño parche $m \times m$ (ver \autoref{fig:8}) y lo almacenamos en un tensor $m \times m \times n$, donde n corresponderá con el número total de parches. Posteriormente, aplanamos cada sección $m \times m$ para generar vectores de longitud $m^2$, de modo que finalmente nos quedaremos con una matriz $X$ de dimensiones $n \times m^2$ (para más información sobre este tratamiento consultar la referencia \cite{ml}). En las siguientes secciones trataremos de procesar toda esta información para generar la firma de cada una de nuestras columnas atómicas.
 
 \begin{figure}[h!]
     \centering
@@ -16,7 +16,7 @@ En nuestro caso, la información necesaria para caracterizar a cada columna la e
 
 Al estar codificando nuestros datos en forma matricial, podemos plantear la caracterización de las columnas como un problema de reducción de dimensionalidad. Trataremos a las n filas como distintas observaciones y a las $m^2$ columnas como las distintas variables que se pueden medir en cada observación.\\
 
-La idea será descomponer la matriz $X$ en las matrices $V$ ($p \times m^2$) y $U$ ($n \times p$), de modo que $X = U \times V$. La dimensión p coincidirá con el número de componentes que contendrá el vector de características de cada columna atómica. Estos métodos se aplican principalmente en reducción de dimensionalidad porque típicamente $p \ll m^2$.
+La idea será descomponer la matriz $X$ en las matrices $V$ ($p \times m^2$) y $U$ ($n \times p$), de modo que $X = U \times V$ \cite{EELS_PCA}. La dimensión p coincidirá con el número de componentes que contendrá el vector de características de cada columna atómica. Estos métodos se aplican principalmente en reducción de dimensionalidad porque típicamente $p \ll m^2$.
 
 \begin{figure}[h!]
     \centering
@@ -47,7 +47,7 @@ El PCA es una técnica que, haciendo uso de la descomposición SVD, nos ofrece u
     \label{fig:10}
 \end{wrapfigure} 
 
-Una vez tenemos $B$, ya todo se reduce a aplicar el método SVD. Los autovectores asociados a los valores singulares más grandes corresponderán con las direcciones de mayor variación.\\
+Una vez tenemos $B$, ya todo se reduce a aplicar el método SVD. Los autovectores asociados a los valores singulares más grandes corresponderán con las direcciones de mayor variación (\cite{databook}, capítulo 1).\\
 
 
 
