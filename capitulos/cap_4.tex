@@ -4,14 +4,14 @@
 
 Los óxidos con estructura de perovskita son materiales complejos que se caracterizan por presentar una gran variedad de propiedades físicas muy interesantes. En nuestro caso hablaremos del SrTiO$_3$ (STO), un material dieléctrico que a 300 K presenta un gap de 3.2 eV.\\
 
-El STO es una perovskita muy sensible al dopado, pues sus propiedades físicas se pueden ver alteradas drásticamente ante pequeños cambios en su composición. Concretamente, si sobre un sustrato de STO con una pequeña concentración de vacantes de oxígeno se hace crecer una fina capa de LTO (otra perovskita dieléctrica), se ha podido medir experimentalmente que en la interfase aparece una alta conductividad eléctrica \cite{STO}.\\
-
-En este capítulo nos centraremos en ayudar a caracterizar una muestra de STO cuya concentración de vacantes de oxígeno es desconocida.
+El STO es una perovskita muy sensible al dopado, pues sus propiedades físicas se pueden ver alteradas drásticamente ante pequeños cambios en su composición. Concretamente, si sobre un sustrato de STO con una pequeña concentración de vacantes de oxígeno se hace crecer una fina capa de LaAlO$_3$ (LAO, otra perovskita dieléctrica), se ha podido medir experimentalmente que en la interfase aparece una alta conductividad eléctrica \cite{STO}. Este fenómeno se debe a la estabilización del gas bidimensional electrones bidimensional que vive en la intercara.
 
 \subsection{Procesamiento de imágenes ABF de SrTiO$_3$}
 
-\begin{wrapfigure}{o}{6cm}
-    \includegraphics[width=0.37\textwidth]{fig/Fig15.png}
+En esta sección nos dedicaremos al análisis de datos experimentales rutinarios obtenidos en el Centro Nacional de Microscopía Electrónica de la UCM. Contamos con una muestra de STO cuya concentración de vacantes de oxígeno es desconocida, nosotros trataremos de ayudar caracterizarla.\\
+
+\begin{wrapfigure}{o}{5.5cm}
+    \includegraphics[width=0.34\textwidth]{fig/Fig15.png}
     \caption{En esta imagen se muestra un esquema de la celda unidad de SrTiO$_3$ (STO), junto a su visualización sobre una imagen simulada ABF \cite{paquito}.}
     \label{fig:15}
 \end{wrapfigure} 
@@ -23,7 +23,7 @@ Partiendo de la imagen ABF que se muestra en la Figura \ref{fig:16}a, llevaremos
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{fig/Fig16.png}
-    \caption{\textbf{a)} Imagen ABF tomada por Francisco Fernández Cañizares sobre una muestra de STO horneada a 500 ºC durante 8 h - 6C 10cm df0. En la esquina inferior derecha aparece la región de integración sobre el patrón de difracción (15:30 mrads) seleccionada para generar dicha imagen. Los puntos de interés han sido escogidos por el algoritmo de detección de \textit{blobs}, cuyo \textit{input} corresponde con \textbf{b)} un filtrado FFT de alto umbral sobre la imagen ABF invertida. Programa desarrollado en MATLAB por el autor \cite{repo}.}
+    \caption{\textbf{a)} Imagen ABF tomada por Francisco Fernández Cañizares (Departamento de Física de Materiales, UCM) sobre una muestra de STO horneada a 500 ºC durante 8 h - 6C 10cm df0. En la esquina inferior derecha aparece la región de integración sobre el patrón de difracción (15:30 mrads) seleccionada para generar dicha imagen. Los puntos de interés han sido escogidos por el algoritmo de detección de \textit{blobs}, cuyo \textit{input} corresponde con \textbf{b)} un filtrado FFT de alto umbral sobre la imagen ABF invertida. Programa desarrollado en MATLAB por el autor \cite{repo}.}
     \label{fig:16}
 \end{figure}
 
@@ -49,8 +49,11 @@ Si lo que buscamos es utilizar un \textit{autoencoder} para reducir el ruido de 
     \label{fig:17}
 \end{figure}
 
-\subsection{Análisis de resultados y conclusiones}
+\subsection{Análisis de resultados}
 
-En vista de los resultados de la \autoref{fig:17}, realmente no hemos conseguido alcanzado el objetivo inicial de distinguir las columnas de oxígeno presentes en la imagen ABF de STO. Esta información es tan poco significativa que se ha visto diluida entre el resto del ruido, de modo que ninguno de los algoritmos empleados ha sido capaz de captarla. Si contáramos con una mayor cantidad de datos, dado que las columnas de oxígeno siempre van a estar presentes en nuestra imagen ABF, a la larga éstas comenzarían a ganar relevancia entre el resto de anomalías.\\
+La alta definición de las columnas de Ti y Sr en la \autoref{fig:17} muestra claramente cómo es posible entrenar con éxito a la red neuronal para localizar los detalles deseados. En este caso, el resultado nos sirve para concluir que en nuestra imagen ABF no contamos con suficiente información sobre las columnas de oxígeno como para poder caracterizarlas. Este ejemplo demuestra cómo los algoritmos basados en técnicas de IA pueden tener éxito en localizar comportamientos en el ruido, aunque para ello necesitamos grandes volúmenes de datos que nos permitan mejorar la estadística del sistema, haciendo más relevante aquella información que queda diluida entre el ruido.
 
-A pesar de este hecho, la eficiencia de las técnicas de \textit{denoising} que hemos empleado es muy alta. Las columnas de Ti y Sr de la celda unidad procesada han quedado mucho mejor definidas en comparación a las de la imagen original. 
+\addcontentsline{toc}{section}{Conclusiones} \normalsize
+\section*{Conclusiones}
+
+A lo largo de este trabajo hemos revisado el estado del arte en la aplicación de técnicas estadísticas y de IA a microscopía electrónica multidimensional, desarrollando una serie de algoritmos que hemos conseguido aplicar con gran éxito a datos de STEM rutinarios. Dicho logro, nos permite concluir este trabajo con una visión muy positiva en cuanto al futuro de este tipo de técnicas como una herramienta fundamental de caracterización, capaz de apoyar al científico en el estudio y descubrimiento de nuevos materiales avanzados.
