@@ -39,12 +39,12 @@ A nivel fundamental, estas redes van a estar compuestas por unas unidades básic
 Cuando la red realiza un \textit{forward pass}, cada neurona de la capa de inicial toma las distintas variables de entrada, las pesa con su parámetro correspondiente y realiza un sumatorio que posteriormente introduce en la función de activación para suministrar una la salida $y_i^l$. Cada una de estas salidas actúa como entrada para las neuronas de la siguiente capa, y este proceso se repite hasta alcanzar la capa de salida. Lo que se logra así es realizar una serie de transformaciones lineales encadenadas, llevando los datos de entrada a un nuevo espacio desde el cuál poder clasificarlos (algo similar a lo que hicimos con el PCA).\\
 
 \newpage
-Para entrenar a la red se realiza un \textit{backward pass}, computando el error $\delta_i^L $ de la última capa mediante una función de coste (que depende de $y_i^L$ y $z_i$, las salidas que esperamos) y propagándolo hacía atrás para determinar el del resto de capas. Posteriormente se aplica un descenso del gradiente que trata de minimizar cada error $\delta_i^l$ modulando los parámetros asociados a la capa $l$, incluidos los independientes.\\
+Para entrenar a la red se realiza un \textit{backward pass}, computando el error $\delta_i^L $ de la última capa mediante una función de coste (que depende de $y_i^L$ y $z_i$, las salidas que esperamos) y propagándolo hacía atrás para determinar el del resto de capas. Posteriormente se aplica un descenso del gradiente que trata de minimizar cada error $\delta_i^l$ modulando los parámetros asociados a la capa $l$, incluidos los independientes. Un desarrollo más detallado sobre todo el cálculo asociado a nuestras redes neuronales se puede encontrar en los archivos de \textit{Jupyter Notebook} escritos por el autor \cite{repo}.\\
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{fig/Fig14.png}
-    \caption{Se muestra \textbf{a)} el conjunto de entrenamiento (tomados de la \ref{fig:9}) y el estado final de la red tras diez mil iteraciones, \textbf{b)} una predicción de la red para dos nuevas entradas, y \textbf{c)} el caso de una red entrenada con un \textit{dataset} mucho más complejo. A la derecha tenemos un esquema de la topología de la red. Programa desarrollado en Python por el autor \cite{repo}.}
+    \caption{Se muestra \textbf{a)} el conjunto de entrenamiento (tomados de la \autoref{fig:9}) y el estado final de la red tras diez mil iteraciones, \textbf{b)} una predicción de la red para dos nuevas entradas, y \textbf{c)} el caso de una red entrenada con un \textit{dataset} mucho más complejo. A la derecha tenemos un esquema de la topología de la red. Programa desarrollado en Python por el autor \cite{repo}.}
     \label{fig:14}
 \end{figure}
 
