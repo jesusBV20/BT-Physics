@@ -44,11 +44,12 @@ Si lo que buscamos es utilizar un \textit{autoencoder} para reducir el ruido de 
 \newpage
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{fig/Fig17.png}
+    \includegraphics[width=0.9\textwidth]{fig/Fig17.png}
     \caption{ Figura que muestra \textbf{a)} algunos de los parches contenidos en cada \textit{stack}, \textbf{b)} la topología del \textit{autoencoder} junto a su salida tras un entrenamiento de 300 iteraciones a un \textit{learning rate} de 0.2, y \textbf{c)} el resultado de aplicar PCA y NMF sobre el \textit{clean stack}. Todo el código escrito por el autor en relación a este análisis se encuentra en el capítulo 4 de la referencia \cite{repo}.}
     \label{fig:17}
 \end{figure}
 
+\vspace{-0.6cm}
 \subsection{Análisis de resultados}
 
 La alta definición de las columnas de Ti y Sr en la \autoref{fig:17} muestra claramente cómo es posible entrenar con éxito a la red neuronal para localizar los detalles deseados. En este caso, el resultado nos sirve para concluir que en nuestra imagen ABF no contamos con suficiente información sobre las columnas de oxígeno como para poder caracterizarlas. Este ejemplo demuestra cómo los algoritmos basados en técnicas de IA pueden tener éxito en localizar comportamientos en el ruido, aunque para ello necesitamos grandes volúmenes de datos que nos permitan mejorar la estadística del sistema, haciendo más relevante aquella información que queda diluida entre el ruido.
@@ -56,4 +57,7 @@ La alta definición de las columnas de Ti y Sr en la \autoref{fig:17} muestra cl
 \addcontentsline{toc}{section}{Conclusiones} \normalsize
 \section*{Conclusiones}
 
-A lo largo de este trabajo hemos revisado el estado del arte en la aplicación de técnicas estadísticas y de IA a microscopía electrónica multidimensional, desarrollando una serie de algoritmos que hemos conseguido aplicar con gran éxito a datos de STEM rutinarios. Dicho logro, nos permite concluir este trabajo con una visión muy positiva en cuanto al futuro de este tipo de técnicas como una herramienta fundamental de caracterización, capaz de apoyar al científico en el estudio y descubrimiento de nuevos materiales avanzados.
+A lo largo de este trabajo hemos revisado el estado del arte en la aplicación de técnicas estadísticas y de IA a microscopía electrónica multidimensional. 
+A la vez que presentamos diversos métodos que logran reducir el ruido y tamaño en memoria de imágenes 4D-STEM, también desarrollamos una serie de algoritmos capaces de manipular los datos experimentales para obtener de ellos la información característica del sistema. 
+Finalmente, aprovechando dicha información, enseñamos varios métodos capaces de clasificar nuestros datos por clases y construimos una red neuronal con topología de \textit{autoencoder} que conseguimos entrenar con gran éxito para limpiar y analizar datos de STEM rutinarios.
+Dichos logros nos permiten concluir este trabajo con una visión muy positiva respecto al futuro de este tipo de técnicas como una herramienta fundamental de caracterización, capaz de apoyar al científico en el estudio y descubrimiento de nuevos materiales avanzados.

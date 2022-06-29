@@ -89,14 +89,16 @@ es decir, dada una matriz $A$ con dimensiones $m \times n$ y rango $r$ siempre s
 
 Aprovechando esta propiedad podremos obtener una $A_{ap}$ similar a la matriz $A$, mediante una aproximación en mínimos cuadrados que coincidirá con los $k$ primeros términos de la ecuación (\ref{eq:SVD}). Cabe destacar que el rango de $A_{ap}$ será dicho $k \leq r$. \\
 
+Al aplicar finalmente esta descomposición SVD a la imagen ADF de la  \autoref{fig:4} observamos cómo, a parte de disminuir el tamaño de la imagen, también es capaz de extraer la información más característica para reducir el ruido de forma significativa.
+
 \subsection{Detección de columnas atómicas}
 
 Automatizar la detección de máximos y mínimos en nuestras imágenes es un paso fundamental. Necesitamos codificar las posiciones de las distintas columnas atómicas para posteriormente ser capaces de extraer la información relevante del sistema. Para ello recurriremos a distintas técnicas de visión por ordenador que nos permitan detectar picos de intensidad. 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{fig/Fig5.png}
-    \caption{Imagen generada en MATLAB por el autor \cite{repo} que muestra el caso de un \textit{blob} unidimensionales sobre los que se convoluciona distintos filtros NLoG. En la primera columna tenemos un \textit{blob} estrecho que puede ser capturado por una gaussiana de bajo $\sigma$. En la segunda y tercera columna contamos con un \textit{blob} más largo que requiere de una gaussiana con mayor $\sigma$ para que la señal convolucionada cuente con un pico bien definido. Finalmente, la última columna muestra la convolución de una señal con dos \textit{blobs}.}
+    \includegraphics[width=0.9\textwidth]{fig/Fig5.png}
+    \caption{Imagen generada en MATLAB por el autor \cite{repo} que muestra varios casos de un \textit{blob} unidimensional artificial sobre el que se convolucionan distintos filtros NLoG. En la primera columna tenemos un \textit{blob} estrecho que puede ser capturado por una gaussiana de bajo $\sigma$. En la segunda y tercera columna contamos con un \textit{blob} más largo, el cual requiere de una gaussiana con mayor $\sigma$ para que la señal convolucionada cuente con un pico bien definido. Finalmente, la última columna muestra la convolución de dos \textit{blobs} con una señal de bajo $\sigma$.}
     \label{fig:5}
 \end{figure}
 
@@ -122,7 +124,7 @@ De este modo, dada una imagen $I(x,y)$, podremos encontrar el conjunto de puntos
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{fig/Fig6.png}
+    \includegraphics[width=0.8\textwidth]{fig/Fig6.png}
     \caption{Sobre una imagen ADF de GaAs \cite{maria} se utiliza la funcionalidad \textit{Circle Finder} de la aplicación \textit{Image Segmenter} incluida en el paquete \textit{Image Processing and Computer Vision} de MATLAB, que aplica la CHT \cite{matlab_circulos} como filtro para encontrar círculos de cierto radio.}
     \label{fig:6}
 \end{figure}
